@@ -1,8 +1,7 @@
 #include "Constants.h"
 
-using namespace PasswordGen;
+using namespace PasswordGenerator;
 
-void Constants::setupConstants()
-{
-
-}
+std::string Constants::outputFile = "";
+bool Constants::list = false;
+bool Constants::outputToFile = false;

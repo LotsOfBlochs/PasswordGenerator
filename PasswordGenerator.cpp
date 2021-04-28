@@ -7,7 +7,7 @@ using namespace std;
 
 #include "Constants.h"
 
-using namespace PasswordGen;
+using namespace PasswordGenerator;
 
 int main(int argc, char** argv) {
 	if (argc == 1) {
@@ -27,11 +27,9 @@ int main(int argc, char** argv) {
 			}
 			else if (arg == "-o") { //Option for setting an output file
 				Constants::outputFile = argv[i + 1];
+				Constants::outputToFile = true;
 			}
 		}
 	}
-
-
-
-	return -1;
+	return 0;
 }
