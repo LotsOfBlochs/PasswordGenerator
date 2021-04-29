@@ -3,6 +3,17 @@
 
 #pragma once
 
-#include <iostream>
+
+#include "Constants.h"
+#include "CheckOptions.h"
+#include "Generator.h"
+
+namespace PasswordGenerator {
+	class PasswordGenerator
+	{
+	public:
+	private:
+	};
+}
 
 // TODO: Reference additional headers your program requires here.
