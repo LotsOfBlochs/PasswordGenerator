@@ -11,8 +11,9 @@
 #include <fstream>
 
 namespace PasswordGenerator {
-	class PasswordGenerator
+	class PasswordGen
 	{
 	public:
+		static int str2int(const char* s);
 	};
 }

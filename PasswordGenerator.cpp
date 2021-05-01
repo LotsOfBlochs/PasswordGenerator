@@ -36,19 +36,19 @@ int main(int argc, char** argv) {
 				Constants::outputToFile = true;
 			}
 			else if (arg == "-m") { //Option for setting the minimum length
-				Constants::minimum = (int)argv[i + 1] - 48;
+				Constants::minimum = PasswordGen::str2int(argv[i + 1]);
 				Constants::minimumSet = true;
 			}
 			else if (arg == "-M") { //Option for setting maximum length
-				Constants::maximum = (int)argv[i + 1] - 48;
+				Constants::maximum = PasswordGen::str2int(argv[i + 1]);
 				Constants::maximumSet = true;
 			}
 			else if (arg == "-L") { //Option for setting the length
-				Constants::length = (int)argv[i + 1] - 48;
+				Constants::length = PasswordGen::str2int(argv[i + 1]);
 				Constants::lengthSet = true;
 			}
 		}
-		//test:
+		//.test:
 		if (CheckOptions::check() == 1) {
 			printf("There was an error in your options, Failed to run.\nFor more help try:\n\"PasswordGen -h\"\n");
 			return 1;
@@ -79,4 +79,15 @@ int main(int argc, char** argv) {
 	}
 	printf("Exiting for unkown reason!");
 	return 0;
+}
+
+int PasswordGen::str2int(const char* s)
+{
+	int res = 0;
+	while (*s) {
+		res *= 10;
+		res += *s++ - '0';
+	}
+
+	return res;
 }
