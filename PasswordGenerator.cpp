@@ -11,6 +11,10 @@ string passwordsList;
 int main(int argc, char** argv) {
 	printf("Welcome to the Password Generator\n\n");
 	if (argc == 1) {
+		//Constants::single = true;
+		//Constants::length = 12;
+		//Constants::lengthSet = true;
+		//goto test;
 		cout << "Please use a valid number of options!";
 		return 1;
 	}
@@ -19,6 +23,7 @@ int main(int argc, char** argv) {
 			string arg = argv[i];
 			if (arg == "-h") { //Option for printing the Help statement
 				cout << "Insert Help statement here\nPlease Do it\nI need help\n";
+				return 0;
 			}
 			else if (arg == "-l") { //Option for list of all possible passwords between 2 lengths
 				Constants::list = true;
@@ -43,7 +48,7 @@ int main(int argc, char** argv) {
 				Constants::lengthSet = true;
 			}
 		}
-		test:
+		//test:
 		if (CheckOptions::check() == 1) {
 			printf("There was an error in your options, Failed to run.\nFor more help try:\n\"PasswordGen -h\"\n");
 			return 1;
@@ -61,11 +66,13 @@ int main(int argc, char** argv) {
 				return 1;
 			}
 			if (Constants::outputToFile) {
-				Output::toFile(passwordsList);
+				ofstream file(Constants::outputFile);
+				file << passwordsList;
+				file.close();
 				return 0;
 			}
 			else {
-				Output::toCli(passwordsList);
+				cout << passwordsList;
 				return 0;
 			}
 		}

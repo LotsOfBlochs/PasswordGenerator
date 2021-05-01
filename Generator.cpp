@@ -5,6 +5,7 @@ using namespace PasswordGenerator;
 using namespace std;
 
 string passwords;
+string password;
 string charecters[] = { " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "\\", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~" };
 vector<string> currentWords(1,"");
 vector<int> nextLetters(1,0);
@@ -19,7 +20,13 @@ string Generator::list() {
 }
 
 string Generator::single() {
-	return "";
+	if (Constants::lengthSet == false) {
+		Constants::length = rand() % (Constants::maximum - Constants::minimum + 1) + Constants::minimum;
+	}
+	for (i = 0; i < Constants::length; i++) {
+		password += charecters[rand() % sizeof(charecters) / sizeof(charecters[0])];
+	}
+	return password;
 }
 
 void Generator::addToList() {
@@ -30,9 +37,7 @@ void Generator::addToList() {
 		nextLetters.push_back(0);
 	}
 	currentWords[i] = word;
-	//currentWords.at(i) = word;
 	nextLetters[i] = 0;
-	//nextLetters.at(i) = 0;
 	for (const auto& y : charecters) {
 		word = currentWords[i];
 		word = word + charecters[nextLetters[i]];

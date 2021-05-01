@@ -8,7 +8,7 @@
 #include "CheckOptions.h"
 #include "Generator.h"
 #include <iostream>
-#include "Output.h"
+#include <fstream>
 
 namespace PasswordGenerator {
 	class PasswordGenerator

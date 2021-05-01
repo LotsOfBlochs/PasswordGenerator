@@ -6,6 +6,6 @@ cmake_minimum_required (VERSION 3.8)
 project ("PasswordGenerator")
 
 # Add source to this project's executable.
-add_executable (PasswordGenerator   "Constants.cpp" "Constants.h" "PasswordGenerator.cpp" "PasswordGenerator.h" "CheckOptions.cpp" "CheckOptions.h" "Generator.cpp" "Generator.h" "Output.cpp")
+add_executable (PasswordGenerator   "Constants.cpp" "Constants.h" "PasswordGenerator.cpp" "PasswordGenerator.h" "CheckOptions.cpp" "CheckOptions.h" "Generator.cpp" "Generator.h" )
 
 # TODO: Add tests and install targets if needed.
