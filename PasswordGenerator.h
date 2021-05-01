@@ -7,13 +7,12 @@
 #include "Constants.h"
 #include "CheckOptions.h"
 #include "Generator.h"
+#include <iostream>
+#include "Output.h"
 
 namespace PasswordGenerator {
 	class PasswordGenerator
 	{
 	public:
-	private:
 	};
 }
-
-// TODO: Reference additional headers your program requires here.

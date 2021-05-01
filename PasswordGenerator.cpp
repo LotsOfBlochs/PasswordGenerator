@@ -2,7 +2,6 @@
 //
 
 #include "PasswordGenerator.h"
-#include <iostream>
 
 using namespace std;
 using namespace PasswordGenerator;
@@ -10,15 +9,16 @@ using namespace PasswordGenerator;
 string passwordsList;
 
 int main(int argc, char** argv) {
+	printf("Welcome to the Password Generator\n\n");
 	if (argc == 1) {
-		printf("Please include a valid number of options.\nFor more help try:\n\"PasswordGen -h\"\n");
+		cout << "Please use a valid number of options!";
 		return 1;
 	}
 	else {
 		for (int i = 0; i < argc; ++i) {
 			string arg = argv[i];
 			if (arg == "-h") { //Option for printing the Help statement
-				printf("Insert Help statement here\nPlease Do it\nI need help\n");
+				cout << "Insert Help statement here\nPlease Do it\nI need help\n";
 			}
 			else if (arg == "-l") { //Option for list of all possible passwords between 2 lengths
 				Constants::list = true;
@@ -30,22 +30,20 @@ int main(int argc, char** argv) {
 				Constants::outputFile = argv[i + 1];
 				Constants::outputToFile = true;
 			}
-			else if (arg == "-m")
-			{
+			else if (arg == "-m") { //Option for setting the minimum length
 				Constants::minimum = (int)argv[i + 1] - 48;
 				Constants::minimumSet = true;
 			}
-			else if (arg == "-M")
-			{
+			else if (arg == "-M") { //Option for setting maximum length
 				Constants::maximum = (int)argv[i + 1] - 48;
 				Constants::maximumSet = true;
 			}
-			else if (arg == "-L")
-			{
+			else if (arg == "-L") { //Option for setting the length
 				Constants::length = (int)argv[i + 1] - 48;
 				Constants::lengthSet = true;
 			}
 		}
+		test:
 		if (CheckOptions::check() == 1) {
 			printf("There was an error in your options, Failed to run.\nFor more help try:\n\"PasswordGen -h\"\n");
 			return 1;
@@ -63,13 +61,15 @@ int main(int argc, char** argv) {
 				return 1;
 			}
 			if (Constants::outputToFile) {
-				//Output::toFile(passwords);
+				Output::toFile(passwordsList);
+				return 0;
 			}
 			else {
-				//Output::toCli(passwords);
-				cout << passwordsList;
+				Output::toCli(passwordsList);
+				return 0;
 			}
 		}
 	}
+	printf("Exiting for unkown reason!");
 	return 0;
 }
